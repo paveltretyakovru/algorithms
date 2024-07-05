@@ -10,13 +10,15 @@ const source = [1, 2, 3];
  * @returns {number} - Summ of array items
  */
 function devideAndConquer(arr = []) {
-  const value = arr.splice(0, 1);
-
   if (!arr.length) {
     return 0;
   }
 
+  const value = arr.splice(0, 1);
+
+  console.log("arr:", arr, "; value:", value[0]);
+
   return value[0] + devideAndConquer(arr);
 }
 
-console.log(devideAndConquer(source));
+console.log("Result: ", devideAndConquer(source));
