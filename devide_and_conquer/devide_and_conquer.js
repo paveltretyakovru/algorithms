@@ -1,6 +1,6 @@
 console.log("JavaScript. Devide and conquer");
 
-const source = [1, 2, 3];
+const source = [3, 1, 35, 2, 10];
 
 /**
  * @function
@@ -26,7 +26,7 @@ function devideAndConquer(arr = []) {
   return devideAndConquer(arr) + devideAndConquer(half);
 }
 
-console.log("Result: ", devideAndConquer(source));
+console.log("Array items summ: ", devideAndConquer([...source]));
 
 // ==========================================================
 /**
@@ -36,14 +36,16 @@ console.log("Result: ", devideAndConquer(source));
  * @argument {Array<number>} arr - source array with numbers
  * @returns {number} - Max value of source array item
  */
-// function devideAndConquerMax(arr = []) {
-//   const value = arr.splice(0, 1);
+function devideAndConquerMax(arr = []) {
+  if (arr.length === 1) {
+    return arr[0];
+  }
 
-//   if (value > devideAndConquerMax(arr)) {
-//     return value;
-//   } else {
-//     return devideAndConquerMax(arr);
-//   }
-// }
+  const midl = Math.floor(arr.length / 2);
+  const left = devideAndConquerMax(arr.splice(0, midl));
+  const right = devideAndConquerMax(arr);
 
-// console.log("Max value: ", devideAndConquerMax(source));
+  return left > right ? left : right;
+}
+
+console.log("Max value of array items: ", devideAndConquerMax([...source]));
