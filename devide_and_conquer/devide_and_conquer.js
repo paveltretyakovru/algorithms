@@ -14,11 +14,36 @@ function devideAndConquer(arr = []) {
     return 0;
   }
 
-  const value = arr.splice(0, 1);
+  if (arr.length === 1) {
+    return arr[0];
+  }
 
-  console.log("arr:", arr, "; value:", value[0]);
+  const midl = Math.floor(arr.length / 2);
+  const half = arr.splice(0, midl);
 
-  return value[0] + devideAndConquer(arr);
+  console.log("middle: ", midl, "arr:", arr, "; value:", half);
+
+  return devideAndConquer(arr) + devideAndConquer(half);
 }
 
 console.log("Result: ", devideAndConquer(source));
+
+// ==========================================================
+/**
+ * @function
+ * @name devideAndConquerMax
+ * @description Search max. value in source array
+ * @argument {Array<number>} arr - source array with numbers
+ * @returns {number} - Max value of source array item
+ */
+// function devideAndConquerMax(arr = []) {
+//   const value = arr.splice(0, 1);
+
+//   if (value > devideAndConquerMax(arr)) {
+//     return value;
+//   } else {
+//     return devideAndConquerMax(arr);
+//   }
+// }
+
+// console.log("Max value: ", devideAndConquerMax(source));
