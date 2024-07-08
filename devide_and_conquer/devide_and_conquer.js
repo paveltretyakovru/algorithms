@@ -21,8 +21,6 @@ function devideAndConquer(arr = []) {
   const midl = Math.floor(arr.length / 2);
   const half = arr.splice(0, midl);
 
-  console.log("middle: ", midl, "arr:", arr, "; value:", half);
-
   return devideAndConquer(arr) + devideAndConquer(half);
 }
 
